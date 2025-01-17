@@ -4,8 +4,8 @@
 <title>Jurassic Facts</title>
 <style>
 body {
-  font-family: sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif; 
+  background-color: #e9f5f8; 
   margin: 0;
   padding: 0;
 }
@@ -13,15 +13,36 @@ body {
 .container {
   width: 80%;
   margin: 50px auto;
-  background: #fff;
+  background: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  position: relative; 
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
+  font-size: 3em;
+  padding: 10px 20px; 
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes border-dance {
+  0% { border-color: #3498db; }
+  25% { border-color: #2ecc71; }
+  50% { border-color: #e74c3c; }
+  75% { border-color: #f39c12; }
+  100% { border-color: #3498db; }
+}
+
+h1 {
+  animation: border-dance 4s linear infinite; 
+  border: 5px solid transparent; 
+  border-radius: 10px;
 }
 
 ul {
@@ -30,96 +51,158 @@ ul {
 }
 
 li {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 4px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-2px);
 }
 
 .fact-title {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #3498db; 
+  text-decoration: none; 
+  transition: color 0.3s ease; 
+}
+
+.fact-title:hover {
+  color: #2980b9; 
 }
 
 .fact-details {
   color: #555;
+  display: none;
+  line-height: 1.6;
 }
-</style>
+
+.selected {
+  background: linear-gradient(to right, #e0ffff, #cce0ff); 
+}
+
+/* Counter Styles */
+#fact-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 16px;
+  background-color: #eee;
+  border-radius: 20px;
+  font-size: 1.2em;
+}
+
+.green { 
+  background-color: green; 
+  color: white;
+}
+</style> 
 </head>
 <body>
   <div class="container">
-    <h1>Jurassic Facts</h1>
+    <h1>Top 10 Jurassic Era Facts</h1>
+    <div id="fact-counter">0/10</div> 
     <ul id="fact-list"></ul>
   </div>
 
   <script>
     const facts = {
-  "facts": [
-    {
-      "id": 1,
-      "fact": "It lasted a LONG time!",
-      "details": "The Jurassic Period spanned from about 201 to 145 million years ago."
-    },
-    {
-      "id": 2,
-      "fact": "Dinosaurs ruled!",
-      "details": "The Jurassic is considered the golden age of dinosaurs, with giants like Brachiosaurus, Diplodocus, and Stegosaurus roaming the Earth."
-    },
-    {
-      "id": 3,
-      "fact": "First feathered dinosaurs!",
-      "details": "While true birds wouldn't evolve until later, the Jurassic saw the appearance of dinosaurs with feathers, like Archaeopteryx, indicating a link between dinosaurs and birds."
-    },
-    {
-      "id": 4,
-      "fact": "Supercontinent breakup",
-      "details": "The supercontinent Pangaea continued to break apart during the Jurassic, leading to the formation of the Atlantic Ocean."
-    },
-    {
-      "id": 5,
-      "fact": "Warm and humid climate",
-      "details": "The Jurassic climate was generally warmer than today, with lush forests covering much of the land."
-    },
-    {
-      "id": 6,
-      "fact": "Rise of the conifers",
-      "details": "Conifer forests dominated the landscape, along with ferns, cycads, and ginkgoes."
-    },
-    {
-      "id": 7,
-      "fact": "Oceans teeming with life",
-      "details": "The Jurassic oceans were home to diverse marine life, including ichthyosaurs, plesiosaurs, and ammonites."
-    },
-    {
-      "id": 8,
-      "fact": "Early mammals scurried about",
-      "details": "While dinosaurs ruled, early mammals, mostly small and nocturnal, were also present."
-    },
-    {
-      "id": 9,
-      "fact": "Volcanic activity",
-      "details": "Significant volcanic activity occurred during the Jurassic, shaping the landscape and influencing the climate."
-    },
-    {
-      "id": 10,
-      "fact": "It ended with an extinction event",
-      "details": "The Jurassic Period ended with a minor extinction event, although not as severe as the one that wiped out the dinosaurs at the end of the Cretaceous."
-    }
-  ]
-};
+      "facts": [
+        {
+          "id": 1,
+          "fact": "It lasted a LONG time!",
+          "details": "The Jurassic Period spanned from about 201 to 145 million years ago."
+        },
+        {
+          "id": 2,
+          "fact": "Dinosaurs ruled!",
+          "details": "The Jurassic is considered the golden age of dinosaurs, with giants like Brachiosaurus, Diplodocus, and Stegosaurus roaming the Earth."
+        },
+        {
+          "id": 3,
+          "fact": "First feathered dinosaurs!",
+          "details": "While true birds wouldn't evolve until later, the Jurassic saw the appearance of dinosaurs with feathers, like Archaeopteryx, indicating a link between dinosaurs and birds."
+        },
+        {
+          "id": 4,
+          "fact": "Supercontinent breakup",
+          "details": "The supercontinent Pangaea continued to break apart during the Jurassic, leading to the formation of the Atlantic Ocean."
+        },
+        {
+          "id": 5,
+          "fact": "Warm and humid climate",
+          "details": "The Jurassic climate was generally warmer than today, with lush forests covering much of the land."
+        },
+        {
+          "id": 6,
+          "fact": "Rise of the conifers",
+          "details": "Conifer forests dominated the landscape, along with ferns, cycads, and ginkgoes."
+        },
+        {
+          "id": 7,
+          "fact": "Oceans teeming with life",
+          "details": "The Jurassic oceans were home to diverse marine life, including ichthyosaurs, plesiosaurs, and ammonites."
+        },
+        {
+          "id": 8,
+          "fact": "Early mammals scurried about",
+          "details": "While dinosaurs ruled, early mammals, mostly small and nocturnal, were also present."
+        },
+        {
+          "id": 9,
+          "fact": "Volcanic activity",
+          "details": "Significant volcanic activity occurred during the Jurassic, shaping the landscape and influencing the climate."
+        },
+        {
+          "id": 10,
+          "fact": "It ended with an extinction event",
+          "details": "The Jurassic Period ended with a minor extinction event, although not as severe as the one that wiped out the dinosaurs at the end of the Cretaceous."
+        } 
+      ]
+    };
 
     const factList = document.getElementById('fact-list');
+    const factCounter = document.getElementById('fact-counter');
+    let count = 0;
 
-    // Loop through the facts and create list items
     facts.facts.forEach(fact => {
       const listItem = document.createElement('li');
+      // Wrap the string in backticks (`) to create a 
+      // template literal
       listItem.innerHTML = `
         <h3 class="fact-title">${fact.fact}</h3>
-        <p class="fact-details">${fact.details}</p>
-      `;
+        <p class="fact-details" style="display: none;">${fact.details}</p>
+      `; 
       factList.appendChild(listItem);
+
+      const factTitle = listItem.querySelector('.fact-title');
+      const factDetails = listItem.querySelector('.fact-details');
+
+      factTitle.addEventListener('click', () => {
+        factDetails.style.display = factDetails.style.display === 'none' ? 'block' : 'none';
+        listItem.classList.toggle('selected'); 
+
+        // Update the counter
+        if (!listItem.classList.contains('counted')) {
+          count++;
+          listItem.classList.add('counted'); 
+        }
+        // Wrap the string in backticks (`) to create a 
+        // template literal
+        factCounter.textContent = `${count}/10`; 
+
+        // Turn the counter green when count reaches 10
+        if (count === 10) {
+          factCounter.classList.add('green');
+        }
+      });
     });
   </script>
 </body>
 </html>
-
