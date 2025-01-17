@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jurassic Facts</title>
+<style>
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.fact-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.fact-details {
+  color: #555;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jurassic Facts</h1>
+    <ul id="fact-list"></ul>
+  </div>
+
+  <script>
+    const facts = {
+  "facts": [
+    {
+      "id": 1,
+      "fact": "It lasted a LONG time!",
+      "details": "The Jurassic Period spanned from about 201 to 145 million years ago."
+    },
+    {
+      "id": 2,
+      "fact": "Dinosaurs ruled!",
+      "details": "The Jurassic is considered the golden age of dinosaurs, with giants like Brachiosaurus, Diplodocus, and Stegosaurus roaming the Earth."
+    },
+    {
+      "id": 3,
+      "fact": "First feathered dinosaurs!",
+      "details": "While true birds wouldn't evolve until later, the Jurassic saw the appearance of dinosaurs with feathers, like Archaeopteryx, indicating a link between dinosaurs and birds."
+    },
+    {
+      "id": 4,
+      "fact": "Supercontinent breakup",
+      "details": "The supercontinent Pangaea continued to break apart during the Jurassic, leading to the formation of the Atlantic Ocean."
+    },
+    {
+      "id": 5,
+      "fact": "Warm and humid climate",
+      "details": "The Jurassic climate was generally warmer than today, with lush forests covering much of the land."
+    },
+    {
+      "id": 6,
+      "fact": "Rise of the conifers",
+      "details": "Conifer forests dominated the landscape, along with ferns, cycads, and ginkgoes."
+    },
+    {
+      "id": 7,
+      "fact": "Oceans teeming with life",
+      "details": "The Jurassic oceans were home to diverse marine life, including ichthyosaurs, plesiosaurs, and ammonites."
+    },
+    {
+      "id": 8,
+      "fact": "Early mammals scurried about",
+      "details": "While dinosaurs ruled, early mammals, mostly small and nocturnal, were also present."
+    },
+    {
+      "id": 9,
+      "fact": "Volcanic activity",
+      "details": "Significant volcanic activity occurred during the Jurassic, shaping the landscape and influencing the climate."
+    },
+    {
+      "id": 10,
+      "fact": "It ended with an extinction event",
+      "details": "The Jurassic Period ended with a minor extinction event, although not as severe as the one that wiped out the dinosaurs at the end of the Cretaceous."
+    }
+  ]
+};
+
+    const factList = document.getElementById('fact-list');
+
+    // Loop through the facts and create list items
+    facts.facts.forEach(fact => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <h3 class="fact-title">${fact.fact}</h3>
+        <p class="fact-details">${fact.details}</p>
+      `;
+      factList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
+
